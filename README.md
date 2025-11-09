@@ -3,8 +3,8 @@
 ## TECH stack - Node.js, Express and Mongo DB.
 
 ## Install
-
-    $ git clone https://github.com/<git_template_url>/<project_name>
+Clone repo by this and after cloning follow these setps.
+    $ git clone git@github.com:anjaliprog-tech/User-Role-Module.git
     $ cd project_name
 
     First install node modules using command 
