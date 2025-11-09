@@ -1,0 +1,1903 @@
+{
+	"info": {
+		"_postman_id": "2c72eefb-e5ef-4303-a070-dfca3ae4300e",
+		"name": "User Role Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25052431"
+	},
+	"item": [
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "add new role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Developer\", \n    \"accessModules\" : [\"Payroll\", \"CRM\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/role/add"
+					},
+					"response": [
+						{
+							"name": "add new role with access module, unique name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Designer\", \n    \"accessModules\" : [\"Payroll\", \"CRM\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/add"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-MbA89jtH/DlGoK1YaseumEq5/Ds\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:07:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"Designer\",\n        \"accessModules\": [\n            \"Payroll\",\n            \"CRM\"\n        ],\n        \"active\": true,\n        \"_id\": \"691067eb21d398cc9dc7d17a\",\n        \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n        \"updatedAt\": \"2025-11-09T10:07:39.359Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Same name role exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Designer\", \n    \"accessModules\" : [\"Payroll\", \"CRM\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/add"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-3ZTHYKJ7okFVkM1gw8U+kLXk4jA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:10:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Role already exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get all list of role with pagination and search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\" : 1, \n    \"limit\":10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/role/list"
+					},
+					"response": [
+						{
+							"name": "get all role list with pagination",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"page\" : 1, \n    \"limit\":10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"de-HvBdItN7UmsWGP3/yLsjx330Q80\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:16:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"691067eb21d398cc9dc7d17a\",\n            \"name\": \"Designer\",\n            \"accessModules\": [\n                \"Payroll\",\n                \"CRM\"\n            ],\n            \"active\": true,\n            \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n            \"updatedAt\": \"2025-11-09T10:07:39.359Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1\n}"
+						},
+						{
+							"name": "get role list with search and pagination",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"page\" : 1, \n    \"limit\":10,\n    \"search\" : \"gner\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"de-HvBdItN7UmsWGP3/yLsjx330Q80\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:20:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"691067eb21d398cc9dc7d17a\",\n            \"name\": \"Designer\",\n            \"accessModules\": [\n                \"Payroll\",\n                \"CRM\"\n            ],\n            \"active\": true,\n            \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n            \"updatedAt\": \"2025-11-09T10:07:39.359Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "get data by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"search\" : \"\", \n    \"page\" : 1, \n    \"limit\":10\n}"
+						},
+						"url": "{{url}}/role/691067eb21d398cc9dc7d17a"
+					},
+					"response": [
+						{
+							"name": "get specific role info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"search\" : \"\", \n    \"page\" : 1, \n    \"limit\":10\n}"
+								},
+								"url": "{{url}}/role/691067eb21d398cc9dc7d17a"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-EcxXBNo2cDQHuMkcw8kRoNYnC1A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:18:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"691067eb21d398cc9dc7d17a\",\n        \"name\": \"Designer\",\n        \"accessModules\": [\n            \"Payroll\",\n            \"CRM\"\n        ],\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n        \"updatedAt\": \"2025-11-09T10:07:39.359Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update role data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Designer\",\n    \"accessModules\" : [\"Payroll\", \"CRM\", \"HRMS\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/role/update/691067eb21d398cc9dc7d17a"
+					},
+					"response": [
+						{
+							"name": "unique name while update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Developer\",\n    \"accessModules\" : [\"Payroll\", \"CRM\", \"HRMS\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/update/691067eb21d398cc9dc7d17a"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-HJyuTbB4D+z2bziKNHhmeuOHlos\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:24:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Role with this name already exists\"\n}"
+						},
+						{
+							"name": "update role data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Designer\",\n    \"accessModules\" : [\"Payroll\", \"CRM\", \"HRMS\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/update/691067eb21d398cc9dc7d17a"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "217"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d9-dT0kSW0vGEUjlO11De/sFDsT4lQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:25:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"691067eb21d398cc9dc7d17a\",\n        \"name\": \"Designer\",\n        \"accessModules\": [\n            \"Payroll\",\n            \"CRM\",\n            \"HRMS\"\n        ],\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n        \"updatedAt\": \"2025-11-09T10:25:08.049Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add unique access module in role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\" : \"PMS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/role/add-module/691067eb21d398cc9dc7d17a"
+					},
+					"response": [
+						{
+							"name": "add new unique module in role",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"module\" : \"PMS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/add-module/691067eb21d398cc9dc7d17a"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-DJtKOzqlGpl6MhzUlrZkMcXZkQc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:29:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"691067eb21d398cc9dc7d17a\",\n        \"name\": \"Designer\",\n        \"accessModules\": [\n            \"Payroll\",\n            \"CRM\",\n            \"HRMS\",\n            \"PMS\"\n        ],\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n        \"updatedAt\": \"2025-11-09T10:29:58.502Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "remove module from access module from role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\" : \"CRM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/role/remove-module/691067eb21d398cc9dc7d17a"
+					},
+					"response": [
+						{
+							"name": "remove",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"module\" : \"CRM\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/role/remove-module/691067eb21d398cc9dc7d17a"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "217"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d9-VSX+vxZn210HbSsGdD0c3bJ3PqU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:31:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"691067eb21d398cc9dc7d17a\",\n        \"name\": \"Designer\",\n        \"accessModules\": [\n            \"Payroll\",\n            \"HRMS\",\n            \"PMS\"\n        ],\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:07:39.359Z\",\n        \"updatedAt\": \"2025-11-09T10:31:28.233Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\" : \"CRM\"\n}"
+						},
+						"url": "{{url}}/role/691067eb21d398cc9dc7d17a"
+					},
+					"response": [
+						{
+							"name": "Delete role is no user is associated with the role",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"module\" : \"CRM\"\n}"
+								},
+								"url": "{{url}}/role/691067eb21d398cc9dc7d17a"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-7NgLjtgf7wvkB6GIAoUVewEv+ho\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:33:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Role deleted\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "sign up user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"test\",\n    \"lastName\": \"info\",\n    \"username\": \"test-123\",\n    \"email\": \"test123@gmail.com\",\n    \"password\": \"test123\",\n    \"role\": \"69106bbcb69ebdb3ff126094\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/sign-up"
+					},
+					"response": [
+						{
+							"name": "user sign-up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Anjali\",\n    \"lastName\": \"Gupta\",\n    \"username\": \"AnjaliG-15\",\n    \"email\": \"guptaj1504@gmail.com\",\n    \"password\": \"test123\",\n    \"role\": \"69106bbcb69ebdb3ff126094\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/sign-up"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "528"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"210-PW7x+135+wuo1nBp/mLiNqDxVe4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:39:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"firstName\": \"Anjali\",\n        \"lastName\": \"Gupta\",\n        \"username\": \"AnjaliG-15\",\n        \"email\": \"guptaj1504@gmail.com\",\n        \"password\": \"$2b$10$QGJNNL4b1szm887VhxzM7O73yR2ZqSfM2cCHmnhcP8EQ3TZTIVmRC\",\n        \"role\": \"69106bbcb69ebdb3ff126094\",\n        \"active\": true,\n        \"_id\": \"69106f724f89ac4831556404\",\n        \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n        \"updatedAt\": \"2025-11-09T10:39:46.604Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA2ZjcyNGY4OWFjNDgzMTU1NjQwNCIsImlhdCI6MTc2MjY4NDc4NiwiZXhwIjoxNzYyNzcxMTg2fQ.ZO0mAPLTYyGycFOdYut0IXEdz8y2Z-Bysfd0qGwNV1s\"\n}"
+						},
+						{
+							"name": "user with same name exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Anjali\",\n    \"lastName\": \"Gupta\",\n    \"username\": \"AnjaliG-15\",\n    \"email\": \"guptaj1504@gmail.com\",\n    \"password\": \"test123\",\n    \"role\": \"69106bbcb69ebdb3ff126094\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/sign-up"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-iGErLku/9taeeOQN+9qwFgLXnuo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:40:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User already exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailOrUsername\": \"AnjaliG-15\",\n    \"password\": \"test123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/login"
+					},
+					"response": [
+						{
+							"name": "login user response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailOrUsername\": \"AnjaliG-15\",\n    \"password\": \"test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "615"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"267-FcshMFRQ7aRMEuG1Q/ecWj46pOE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:41:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"69106f724f89ac4831556404\",\n        \"firstName\": \"Anjali\",\n        \"lastName\": \"Gupta\",\n        \"username\": \"AnjaliG-15\",\n        \"email\": \"guptaj1504@gmail.com\",\n        \"role\": {\n            \"_id\": \"69106bbcb69ebdb3ff126094\",\n            \"name\": \"Developer\",\n            \"accessModules\": [\n                \"Payroll\",\n                \"CRM\"\n            ],\n            \"active\": true,\n            \"createdAt\": \"2025-11-09T10:23:56.519Z\",\n            \"updatedAt\": \"2025-11-09T10:23:56.519Z\",\n            \"__v\": 0\n        },\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n        \"updatedAt\": \"2025-11-09T10:39:46.604Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA2ZjcyNGY4OWFjNDgzMTU1NjQwNCIsImlhdCI6MTc2MjY4NDg4NywiZXhwIjoxNzYyNzcxMjg3fQ.9giIC0eJrf7mp9TIdctu20WG5kRJk-l9XS4mFN0C9BE\"\n}"
+						},
+						{
+							"name": "Invalid creds",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailOrUsername\": \"AnjaliG-15123\",\n    \"password\": \"test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:41:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						},
+						{
+							"name": "pass wrong",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailOrUsername\": \"AnjaliG-15\",\n    \"password\": \"sdtest123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:44:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get user list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA3MWZjNTBhYjk2NDY1MzY3MWEwZiIsImlhdCI6MTc2MjY4NTUzMSwiZXhwIjoxNzYyNzcxOTMxfQ.Gi82ZZ0udHVShsNc1dYs97dlZcRo_0_LmJclwgkD66M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"limit\":10,\n    \"page\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/list"
+					},
+					"response": [
+						{
+							"name": "get user list with pagination",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\":10,\n    \"page\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "345"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"159-UPZpx2lX2xAKpxpRA1bCmv6ePKo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:46:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"69106f724f89ac4831556404\",\n            \"firstName\": \"Anjali\",\n            \"lastName\": \"Gupta\",\n            \"username\": \"AnjaliG-15\",\n            \"email\": \"guptaj1504@gmail.com\",\n            \"role\": {\n                \"_id\": \"69106bbcb69ebdb3ff126094\",\n                \"name\": \"Developer\",\n                \"accessModules\": [\n                    \"Payroll\",\n                    \"CRM\"\n                ]\n            },\n            \"active\": true,\n            \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n            \"updatedAt\": \"2025-11-09T10:39:46.604Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1\n}"
+						},
+						{
+							"name": "list with role and serach",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\":10,\n    \"page\":1,\n    \"search\" : \"G-15\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/list"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "345"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"159-UPZpx2lX2xAKpxpRA1bCmv6ePKo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:47:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"69106f724f89ac4831556404\",\n            \"firstName\": \"Anjali\",\n            \"lastName\": \"Gupta\",\n            \"username\": \"AnjaliG-15\",\n            \"email\": \"guptaj1504@gmail.com\",\n            \"role\": {\n                \"_id\": \"69106bbcb69ebdb3ff126094\",\n                \"name\": \"Developer\",\n                \"accessModules\": [\n                    \"Payroll\",\n                    \"CRM\"\n                ]\n            },\n            \"active\": true,\n            \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n            \"updatedAt\": \"2025-11-09T10:39:46.604Z\",\n            \"__v\": 0\n        }\n    ],\n    \"total\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "get userinformation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA2ZjcyNGY4OWFjNDgzMTU1NjQwNCIsImlhdCI6MTc2MjY4NDg4NywiZXhwIjoxNzYyNzcxMjg3fQ.9giIC0eJrf7mp9TIdctu20WG5kRJk-l9XS4mFN0C9BE"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"limit\":10,\n    \"page\":1\n}"
+						},
+						"url": "{{url}}/user/69106f724f89ac4831556404"
+					},
+					"response": [
+						{
+							"name": "get user info by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\":10,\n    \"page\":1\n}"
+								},
+								"url": "{{url}}/user/69106f724f89ac4831556404"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "333"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14d-GG//6iL9xN++DEaJ1nvnZl8dRGA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:48:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"69106f724f89ac4831556404\",\n        \"firstName\": \"Anjali\",\n        \"lastName\": \"Gupta\",\n        \"username\": \"AnjaliG-15\",\n        \"email\": \"guptaj1504@gmail.com\",\n        \"role\": {\n            \"_id\": \"69106bbcb69ebdb3ff126094\",\n            \"name\": \"Developer\",\n            \"accessModules\": [\n                \"Payroll\",\n                \"CRM\"\n            ]\n        },\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n        \"updatedAt\": \"2025-11-09T10:39:46.604Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA2ZjcyNGY4OWFjNDgzMTU1NjQwNCIsImlhdCI6MTc2MjY4NDg4NywiZXhwIjoxNzYyNzcxMjg3fQ.9giIC0eJrf7mp9TIdctu20WG5kRJk-l9XS4mFN0C9BE"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lastName\": \"ABC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/69106f724f89ac4831556404"
+					},
+					"response": [
+						{
+							"name": "update user info",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lastName\": \"ABC\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/69106f724f89ac4831556404"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "270"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10e-zRTwmJtvk/+wFeMb0Ofv3mhcmBU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:49:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"69106f724f89ac4831556404\",\n        \"firstName\": \"Anjali\",\n        \"lastName\": \"ABC\",\n        \"username\": \"AnjaliG-15\",\n        \"email\": \"guptaj1504@gmail.com\",\n        \"role\": \"69106bbcb69ebdb3ff126094\",\n        \"active\": true,\n        \"createdAt\": \"2025-11-09T10:39:46.604Z\",\n        \"updatedAt\": \"2025-11-09T10:49:45.063Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA2ZjcyNGY4OWFjNDgzMTU1NjQwNCIsImlhdCI6MTc2MjY4NDg4NywiZXhwIjoxNzYyNzcxMjg3fQ.9giIC0eJrf7mp9TIdctu20WG5kRJk-l9XS4mFN0C9BE"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lastName\": \"ABC\"\n}"
+						},
+						"url": "{{url}}/user/69106f724f89ac4831556404"
+					},
+					"response": [
+						{
+							"name": "delete user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lastName\": \"ABC\"\n}"
+								},
+								"url": "{{url}}/user/69106f724f89ac4831556404"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-+BFCXZBji7vrbkrwyE5s2YKViik\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:50:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "check user have access of module or nor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA3MWZjNTBhYjk2NDY1MzY3MWEwZiIsImlhdCI6MTc2MjY4NTUzMSwiZXhwIjoxNzYyNzcxOTMxfQ.Gi82ZZ0udHVShsNc1dYs97dlZcRo_0_LmJclwgkD66M"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"module\" : \"CRM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/691071fc50ab964653671a0f/check-access"
+					},
+					"response": [
+						{
+							"name": "check user has access or not for specific module",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"module\" : \"CRM\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/691071fc50ab964653671a0f/check-access"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-ZAfszfiwH+GknxZlGJcy1Rn5bQs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:52:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"hasAccess\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "bulk update same params to all records",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA3MWZjNTBhYjk2NDY1MzY3MWEwZiIsImlhdCI6MTc2MjY4NTUzMSwiZXhwIjoxNzYyNzcxOTMxfQ.Gi82ZZ0udHVShsNc1dYs97dlZcRo_0_LmJclwgkD66M"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filter\": { \"active\": true },\n  \"update\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\" : \"guptaj1504@gmail.com\",\n    \"password\": \"test\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/bulk/update-same"
+					},
+					"response": [
+						{
+							"name": "update all record with same value",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filter\": { \"active\": true },\n  \"update\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"password\": \"test\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/bulk/update-same"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "118"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76-mD/W7CoBpEQsD83a+LfcdvrOmwQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 11:03:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": {\n        \"acknowledged\": true,\n        \"modifiedCount\": 2,\n        \"upsertedId\": null,\n        \"upsertedCount\": 0,\n        \"matchedCount\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "bulk update multiple record with diff payload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MTA3MWZjNTBhYjk2NDY1MzY3MWEwZiIsImlhdCI6MTc2MjY4NTUzMSwiZXhwIjoxNzYyNzcxOTMxfQ.Gi82ZZ0udHVShsNc1dYs97dlZcRo_0_LmJclwgkD66M"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"filter\": { \"_id\": \"691072be50ab964653671a18\" },\n    \"update\": { \"$set\": { \"firstName\": \"John\" } }\n  },\n  {\n    \"filter\": { \"_id\": \"691071fc50ab964653671a0f\" },\n    \"update\": { \"$set\": { \"email\": \"newemail@example.com\", \"lastName\": \"Doe\" } }\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/user/bulk/update-different"
+					},
+					"response": [
+						{
+							"name": "update two records",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"filter\": { \"_id\": \"691072be50ab964653671a18\" },\n    \"update\": { \"$set\": { \"firstName\": \"John\" } }\n  },\n  {\n    \"filter\": { \"_id\": \"691071fc50ab964653671a0f\" },\n    \"update\": { \"$set\": { \"email\": \"newemail@example.com\", \"lastName\": \"Doe\" } }\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/user/bulk/update-different"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Accept, Authorization, Authorization"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "149"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"95-kRnJoHT+wv1CiSUexSrmwsbdpvM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 09 Nov 2025 10:58:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"result\": {\n        \"insertedCount\": 0,\n        \"matchedCount\": 2,\n        \"modifiedCount\": 2,\n        \"deletedCount\": 0,\n        \"upsertedCount\": 0,\n        \"upsertedIds\": {},\n        \"insertedIds\": {}\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
